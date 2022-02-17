@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import edu.weber.w01311060.databases.db.AppDatabase;
+import edu.weber.w01311060.databases.models.User;
+
 public class MainActivity extends AppCompatActivity
 {
     /*
@@ -18,5 +21,20 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                AppDatabase.getInstance(getApplicationContext())
+                           .getUserDao()
+                           .insertUsers(new User("Hunter", "Olson")); //getContext() when in fragment
+            }
+        }).start();
     }
+
+    //do in fragment not the main activity this is only for demonstration purposes
+
+
 }

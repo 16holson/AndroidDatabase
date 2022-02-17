@@ -7,14 +7,20 @@ import androidx.room.PrimaryKey;
 @Entity
 public class User
 {
+    public User(String firstname, String lastname)
+    {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
     @PrimaryKey(autoGenerate = true) //auto increments
     private int userID;
 
-    @ColumnInfo(name = "fname")
-    private String fName;
+    @ColumnInfo(name = "firstname")
+    private String firstname;
 
-    @ColumnInfo(name = "lname")
-    private String lName;
+    @ColumnInfo(name = "lastname")
+    private String lastname;
 
     @ColumnInfo(name = "username")
     private String userName;
@@ -35,24 +41,24 @@ public class User
         this.userID = userID;
     }
 
-    public String getfName()
+    public String getFirstname()
     {
-        return fName;
+        return firstname;
     }
 
-    public void setfName(String fName)
+    public void setFirstname(String firstname)
     {
-        this.fName = fName;
+        this.firstname = firstname;
     }
 
-    public String getlName()
+    public String getLastname()
     {
-        return lName;
+        return lastname;
     }
 
-    public void setlName(String lName)
+    public void setLastname(String lastname)
     {
-        this.lName = lName;
+        this.lastname = lastname;
     }
 
     public String getUserName()
