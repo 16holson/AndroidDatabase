@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Databases</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="createUser">Create User</string>
+    <string name="save">Save</string>
 </resources>

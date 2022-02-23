@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface UserDAO
 
     @Insert
     void insertUsers(User... user);
+
+    @Update //Must be an object retrieved from the database (Can't just create a new User)
+    void updateUser(User user);
 }
