@@ -3,6 +3,8 @@ package edu.weber.w01311060.databases;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import edu.weber.w01311060.databases.db.AppDatabase;
 import edu.weber.w01311060.databases.models.User;
@@ -32,6 +34,17 @@ public class MainActivity extends AppCompatActivity
                            .insertUsers(new User("Hunter", "Olson")); //getContext() when in fragment
             }
         }).start();
+
+        Button btn = findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                FullScreenDialog dialog = new FullScreenDialog();
+                dialog.show(getSupportFragmentManager(), "dialog");
+            }
+        });
     }
 
     //do in fragment not the main activity this is only for demonstration purposes

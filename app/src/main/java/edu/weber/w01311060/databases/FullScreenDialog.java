@@ -1,5 +1,6 @@
 package edu.weber.w01311060.databases;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -66,6 +67,8 @@ public class FullScreenDialog extends DialogFragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme_Dialog_FullScreen);
     }
 
     @Override
@@ -93,6 +96,7 @@ public class FullScreenDialog extends DialogFragment
             }
         });
         toolbar.setTitle(R.string.createUser);
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_close_24);
         toolbar.inflateMenu(R.menu.createuser);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener()
         {
@@ -110,6 +114,14 @@ public class FullScreenDialog extends DialogFragment
         });
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState)
+    {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
 
+        dialog.getWindow().setWindowAnimations(R.style.AppTheme_DialogAnimation);
 
+        return dialog;
+    }
 }
