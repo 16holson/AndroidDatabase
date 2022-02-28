@@ -90,5 +90,18 @@ public class User
     {
         this.phone = phone;
     }
+
+    @Override
+    public String toString()
+    {
+        return "User{" +
+                "userID=" + userID +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }
 

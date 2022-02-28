@@ -1,5 +1,6 @@
 package edu.weber.w01311060.databases.db;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -14,7 +15,7 @@ import edu.weber.w01311060.databases.models.User;
 public interface UserDAO
 {
     @Query("SELECT * FROM User")
-    List<User> getAll();
+    LiveData<List<User>> getAll();
 
     @Query("SELECT * FROM User WHERE userID = :id")
     User findUserByUserId(int id);
