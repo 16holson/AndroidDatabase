@@ -14,6 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.textfield.TextInputLayout;
+
+import edu.weber.w01311060.databases.db.AppDatabase;
+import edu.weber.w01311060.databases.models.User;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +38,7 @@ public class FullScreenDialog extends DialogFragment
     private String mParam2;
 
     private View root;
+    private TextInputLayout first;
 
     public FullScreenDialog()
     {
@@ -86,6 +92,8 @@ public class FullScreenDialog extends DialogFragment
 
         requireDialog().getWindow().setWindowAnimations(R.style.AppTheme_DialogAnimation);
 
+        first = root.findViewById(R.id.textFirst);
+
         Toolbar toolbar = root.findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()
         {
@@ -106,7 +114,22 @@ public class FullScreenDialog extends DialogFragment
                 switch (item.getItemId())
                 {
                     case R.id.save:
-                        //TODO: Save
+
+                        String firstName = first.getEditText().getText().toString(); //don't need final if the User is final
+
+                        final User user = new User(firstName, "Olson");
+
+                        new Thread(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                AppDatabase.getInstance(getContext())
+                                        .getUserDao()
+                                        .insertUsers(user);
+                            }
+                        }).start();
+
                         return true;
                 }
                 return false;
