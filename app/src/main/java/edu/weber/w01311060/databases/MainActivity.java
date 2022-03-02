@@ -40,16 +40,16 @@ public class MainActivity extends AppCompatActivity
             }
         }).start();
 
-        Button btn = findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                FullScreenDialog dialog = new FullScreenDialog();
-                dialog.show(getSupportFragmentManager(), "dialog");
-            }
-        });
+//        Button btn = findViewById(R.id.btn);
+//        btn.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                FullScreenDialog dialog = new FullScreenDialog();
+//                dialog.show(getSupportFragmentManager(), "dialog");
+//            }
+//        });
 
         new ViewModelProvider(this) //Define ownership
                 .get(UserViewModel.class) //returns View Model Instance
