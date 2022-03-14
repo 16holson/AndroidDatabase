@@ -2,11 +2,16 @@ package edu.weber.w01311060.databases;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -67,6 +72,31 @@ public class UserListFragment extends Fragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
+    {
+        inflater.inflate(R.menu.createuser, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.load:
+                loadCourse();
+                return true;
+        }
+        return false;
+    }
+
+    private void loadCourse()
+    {
+        GetCoursesTask task = new GetCoursesTask();
+        task.execute("param", "param");
     }
 
     @Override
@@ -85,6 +115,7 @@ public class UserListFragment extends Fragment
         RecyclerView rv = root.findViewById(R.id.recycler);
 
         if(rv instanceof RecyclerView)
+
         {
             UserRecyclerAdapter adapter = new UserRecyclerAdapter(new ArrayList<User>());
 
