@@ -6,9 +6,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import edu.weber.w01311060.databases.models.Course;
 import edu.weber.w01311060.databases.models.User;
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class, Course.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase
 {
     private static AppDatabase instance;
@@ -24,4 +25,6 @@ public abstract class AppDatabase extends RoomDatabase
     }
 
     public abstract UserDAO getUserDao();
+
+    public abstract CourseDAO getCourseDao();
 }

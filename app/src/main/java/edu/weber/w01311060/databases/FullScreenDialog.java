@@ -115,20 +115,20 @@ public class FullScreenDialog extends DialogFragment
                 {
                     case R.id.save:
 
-                        String firstName = first.getEditText().getText().toString(); //don't need final if the User is final
-
-                        final User user = new User(firstName, "Olson");
-
-                        new Thread(new Runnable()
-                        {
-                            @Override
-                            public void run()
-                            {
-                                AppDatabase.getInstance(getContext())
-                                        .getUserDao()
-                                        .insertUsers(user);
-                            }
-                        }).start();
+//                        String firstName = first.getEditText().getText().toString(); //don't need final if the User is final
+//
+//                        final User user = new User(firstName, "Olson");
+//
+//                        new Thread(new Runnable()
+//                        {
+//                            @Override
+//                            public void run()
+//                            {
+//                                AppDatabase.getInstance(getContext())
+//                                        .getUserDao()
+//                                        .insertUsers(user);
+//                            }
+//                        }).start();
 
                         return true;
                 }

@@ -29,16 +29,16 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new Thread(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                AppDatabase.getInstance(getApplicationContext())
-                           .getUserDao()
-                           .insertUsers(new User("Hunter", "Olson")); //getContext() when in fragment
-            }
-        }).start();
+//        new Thread(new Runnable()
+//        {
+//            @Override
+//            public void run()
+//            {
+//                AppDatabase.getInstance(getApplicationContext())
+//                           .getUserDao()
+//                           .insertUsers(new User("Hunter", "Olson")); //getContext() when in fragment
+//            }
+//        }).start();
 
 //        Button btn = findViewById(R.id.btn);
 //        btn.setOnClickListener(new View.OnClickListener()

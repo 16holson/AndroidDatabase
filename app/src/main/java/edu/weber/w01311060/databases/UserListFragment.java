@@ -99,7 +99,7 @@ public class UserListFragment extends Fragment
     private void loadCourse()
     {
         GetCoursesTask task = new GetCoursesTask();
-        task.execute("param", "param");
+        task.execute(getContext());
     }
 
     @Override
