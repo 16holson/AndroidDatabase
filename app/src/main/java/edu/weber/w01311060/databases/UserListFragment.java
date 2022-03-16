@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,7 @@ import android.view.ViewGroup;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.weber.w01311060.databases.models.User;
 
@@ -113,15 +116,32 @@ public class UserListFragment extends Fragment
         super.onResume();
 
         RecyclerView rv = root.findViewById(R.id.recycler);
+        UserRecyclerAdapter adapter = new UserRecyclerAdapter(new ArrayList<User>());
 
         if(rv instanceof RecyclerView)
-
         {
-            UserRecyclerAdapter adapter = new UserRecyclerAdapter(new ArrayList<User>());
+
 
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
             rv.setAdapter(adapter);
             rv.setHasFixedSize(false);
         }
+
+        UserViewModel vm = new ViewModelProvider(this) //Define ownership
+                .get(UserViewModel.class); //returns View Model Instance
+
+        vm.getAllUsers(getContext()) //getContext() when in fragment (returns LiveData)
+                .observe(this, new Observer<List<User>>()
+                {
+                    @Override
+                    public void onChanged(List<User> users)
+                    {
+                        if(users != null)
+                        {
+                            //Send this to the recycler adapter
+                            adapter.addItems(users);
+                        }
+                    }
+                });
     }
 }

@@ -21,7 +21,6 @@ public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapte
         this.values = values;
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -50,6 +49,14 @@ public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapte
     public int getItemCount()
     {
         return values.size();
+    }
+
+    public void addItems(List<User> users)
+    {
+        values.clear();
+        values.addAll(users);
+
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder

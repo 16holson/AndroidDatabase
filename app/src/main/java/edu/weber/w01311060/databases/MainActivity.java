@@ -51,18 +51,7 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-        UserViewModel vm = new ViewModelProvider(this) //Define ownership
-                .get(UserViewModel.class); //returns View Model Instance
 
-        vm.getAllUsers(getApplicationContext()) //getContext() when in fragment (returns LiveData)
-                .observe(this, new Observer<List<User>>()
-                {
-                    @Override
-                    public void onChanged(List<User> users)
-                    {
-                        Log.d("ActivityObserver", users.toString());
-                    }
-                });
     }
 
     //do in fragment not the main activity this is only for demonstration purposes

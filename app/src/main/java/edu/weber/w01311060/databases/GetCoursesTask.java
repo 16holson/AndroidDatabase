@@ -22,6 +22,13 @@ public class GetCoursesTask extends AsyncTask<String, Integer, String>
         {
             URL url = new URL("https://weber.instructure.com/api/v1/courses");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Authorization", "Bearer " + Authorization.token); //bearer token
+            connection.connect();
+
+            int status = connection.getResponseCode();
+            Log.d("Task", "status " + status);
+
         }
         catch (MalformedURLException e)
         {
